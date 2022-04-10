@@ -1,4 +1,4 @@
-import { makeStyles } from "../../infrastructure/theme/styles";
+import { makeStyles } from '~/infrastructure/theme/styles'
 
 export const useLoginStyles = makeStyles(({palette, spacing}) => ({
     container: {

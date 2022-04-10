@@ -1,6 +1,6 @@
-import React, { useCallback, useReducer } from 'react'
+import { useCallback, useReducer } from 'react'
 import { Text, View, } from 'react-native'
-import Input from '../../components/Input'
+import Input from '~/components/Input'
 import { useLoginStyles } from './Login.styles'
 
 
