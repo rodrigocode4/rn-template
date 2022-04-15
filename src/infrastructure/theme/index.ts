@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { createTheme } from './styles'
 import { createTypography } from './typography'
 import { palette } from './palette'
@@ -9,7 +10,7 @@ declare module './types' {
 }
 
 const createAppTheme = () => {
-  const fontDefault = 'WorkSans-SemiBold';
+  const fontDefault = 'WorkSans-SemiBold'
   return createTheme({
     palette,
     typography: createTypography({
@@ -24,7 +25,7 @@ const createAppTheme = () => {
         paragraph: fontDefault,
       },
     }),
-  });
+  })
 }
 
-export { createAppTheme };
+export { createAppTheme }

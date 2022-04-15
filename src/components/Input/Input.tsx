@@ -1,5 +1,7 @@
 import React from 'react'
-import { View, Text, TextInput, TextInputProps, TextStyle, StyleSheet } from 'react-native'
+import {
+  View, Text, TextInput, TextInputProps, TextStyle, StyleSheet,
+} from 'react-native'
 import { useInputStyles } from './Input.styles'
 
 interface Props extends TextInputProps {
@@ -8,8 +10,8 @@ interface Props extends TextInputProps {
 }
 
 export default (props: Props) => {
-    const styles = useInputStyles()
-    return(
+  const styles = useInputStyles()
+  return (
         <View style={styles.container}>
             <Text
                 style={StyleSheet.flatten([styles.text, props.labelSyles])}
@@ -19,5 +21,5 @@ export default (props: Props) => {
                 style={StyleSheet.flatten([styles.input, props.style])}
             />
         </View>
-    )
+  )
 }

@@ -1,4 +1,4 @@
-
+/* eslint-disable no-unused-vars */
 export interface BasePaletteColor {
     light?: string
     main: string
@@ -8,7 +8,7 @@ export interface BasePaletteColor {
 export type PaletteColor = BasePaletteColor & {
     contrastText: BasePaletteColor
 }
-  
+
 export interface ThemeColorsBase {
     primary: PaletteColor
     secondary: PaletteColor
@@ -48,11 +48,10 @@ export type RemFn = (n: number) => number
 export type ThemeTypographys = ThemeTypographyFontSize & {
     fonts: Fonts
     remFn?: RemFn
-}  
+}
 
 export interface Theme {
     spacing: SpacingFn
     palette: ThemeColors
     typography: ThemeTypographys
 }
-  

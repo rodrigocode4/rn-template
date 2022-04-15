@@ -1,17 +1,13 @@
 import { StatusBar } from 'expo-status-bar'
 import { createAppTheme } from './src/infrastructure/theme'
 import { ThemeProvider } from './src/infrastructure/theme/provider'
-import Login from './src/modules/Login';
+import Login from './src/modules/Login'
 
-const theme = createAppTheme();
+const theme = createAppTheme()
 
-export default () => {
-
-  return (
-    <ThemeProvider theme={theme}>
+export default () => (
+  <ThemeProvider theme={theme}>
       <StatusBar animated style="auto" hideTransitionAnimation='slide' />
       <Login />
     </ThemeProvider>
-  );
-}
-
+)

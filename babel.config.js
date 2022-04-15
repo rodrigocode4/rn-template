@@ -1,7 +1,8 @@
+/* eslint-disable func-names */
 const path = require('path')
 
-module.exports = function(api) {
-  api.cache(true);
+module.exports = function (api) {
+  api.cache(true)
 
   return {
     presets: ['babel-preset-expo'],
@@ -11,9 +12,9 @@ module.exports = function(api) {
         {
           root: path.resolve(),
           rootPathPrefix: '~/',
-          rootPathSuffix: 'src'
+          rootPathSuffix: 'src',
         },
       ],
     ],
-  };
-};
+  }
+}

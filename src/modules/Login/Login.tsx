@@ -1,49 +1,43 @@
 import { useCallback, useReducer } from 'react'
-import { Text, View, } from 'react-native'
+import { Text, View } from 'react-native'
 import Input from '~/components/Input'
 import { useLoginStyles } from './Login.styles'
 
-
-export enum actionsType { 
-    SET_EMAIL = 'SET_EMAIL', 
-    SET_PASSWORD = 'SET_PASSWORD' 
-} 
-
 type Action = {
-    type: keyof typeof actionsType,
+    type: 'SET_EMAIL' | 'SET_PASSWORD',
     payload: string,
 }
 
 const initialState = {
-    email: '',
-    password: ''
+  email: '',
+  password: '',
 }
 
 const reducer = (state: typeof initialState, action: Action) => {
-    switch(action.type) {
-        case actionsType.SET_EMAIL: 
-            return {...state, email: action.payload};
-        case actionsType.SET_PASSWORD: 
-            return {...state, password: action.payload};
-        default: 
-            return state
-    }
+  switch (action.type) {
+    case 'SET_EMAIL':
+      return { ...state, email: action.payload }
+    case 'SET_PASSWORD':
+      return { ...state, password: action.payload }
+    default:
+      return state
+  }
 }
 
 export default () => {
   const styles = useLoginStyles()
-  const [{email, password}, dispatch] = useReducer(reducer, initialState)
+  const [{ email, password }, dispatch] = useReducer(reducer, initialState)
 
   const handleChangeEmail = useCallback((text: string) => {
-    dispatch({type: 'SET_EMAIL', payload: text})
+    dispatch({ type: 'SET_EMAIL', payload: text })
   }, [])
   const handleChangePassword = useCallback((text: string) => {
-    dispatch({type: 'SET_PASSWORD', payload: text})
+    dispatch({ type: 'SET_PASSWORD', payload: text })
   }, [])
 
   return (
         <View style={styles.container}>
-            <Input 
+            <Input
                 labelText='Email:'
                 onChangeText={handleChangeEmail}
                 value={email}
@@ -62,7 +56,4 @@ export default () => {
         </View>
 
   )
-
 }
-
-  

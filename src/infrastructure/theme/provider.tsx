@@ -1,7 +1,6 @@
 import { useMemo, ReactNode, createContext } from 'react'
 import { Theme } from './types'
 
-
 interface ThemeContextProps {
   theme: Theme
 }
@@ -21,4 +20,4 @@ const ThemeProvider = ({ theme, children }: Props) => {
   )
 }
 
-export { ThemeProvider, ThemeContext };
+export { ThemeProvider, ThemeContext }
