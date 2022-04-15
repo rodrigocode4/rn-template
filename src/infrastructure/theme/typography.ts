@@ -5,7 +5,7 @@ import { Fonts, ThemeTypographys } from './types'
 const FRONT_SIZE = 12
 const typographyRem = (n = 1) => {
   const result = Math.round(
-    PixelRatio.roundToNearestPixel(normalize(FRONT_SIZE * n)),
+    PixelRatio.roundToNearestPixel(normalize(FRONT_SIZE * n))
   )
   return result - 2
 }
@@ -13,7 +13,7 @@ const typographyRem = (n = 1) => {
 const fonts: Partial<Fonts> = {}
 
 const createTypography = (
-  typographyParam: Partial<ThemeTypographys> = {},
+  typographyParam: Partial<ThemeTypographys> = {}
 ): ThemeTypographys => {
   const remFn = typographyParam.remFn ?? typographyRem
   return {
@@ -27,8 +27,8 @@ const createTypography = (
     paragraph: remFn(typographyParam.paragraph ?? 1.0),
     fonts: {
       ...fonts,
-      ...typographyParam.fonts,
-    },
+      ...typographyParam.fonts
+    }
   }
 }
 

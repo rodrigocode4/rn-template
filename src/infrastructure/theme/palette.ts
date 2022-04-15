@@ -5,51 +5,51 @@ export const palette: ThemeColors = {
     main: '#F62742',
     dark: '#B81D31',
     contrastText: {
-      main: '#FFFDFD',
-    },
+      main: '#FFFDFD'
+    }
   },
   secondary: {
     main: '#FFFFFF',
     contrastText: {
       main: '#000000',
-      light: '#4D4D4D',
-    },
+      light: '#4D4D4D'
+    }
   },
   info: {
     main: '#F5F6F8',
     contrastText: {
       main: '#6D6D6E',
-      light: '#000',
-    },
+      light: '#000'
+    }
   },
   neutral: {
     main: '#FFF',
     contrastText: {
       main: '#AAAAAA',
       light: '#DDDDDD',
-      dark: '#707070',
-    },
+      dark: '#707070'
+    }
   },
   common: {
     black: '#000',
-    white: '#FFF',
+    white: '#FFF'
   },
   error: {
     main: '#FFF',
     contrastText: {
-      main: '#F00',
-    },
+      main: '#F00'
+    }
   },
   warning: {
     main: '#FFFFDD',
     contrastText: {
-      main: '#000000',
-    },
+      main: '#000000'
+    }
   },
   success: {
     main: '#FFF',
     contrastText: {
-      main: '#13BF6D',
-    },
-  },
+      main: '#13BF6D'
+    }
+  }
 } as const

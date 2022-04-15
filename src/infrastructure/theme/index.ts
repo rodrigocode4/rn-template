@@ -5,7 +5,7 @@ import { palette } from './palette'
 
 declare module './types' {
   interface ThemeColorsBase {
-    neutral?: PaletteColor;
+    neutral?: PaletteColor
   }
 }
 
@@ -22,9 +22,9 @@ const createAppTheme = () => {
         h4: fontDefault,
         h5: fontDefault,
         h6: fontDefault,
-        paragraph: fontDefault,
-      },
-    }),
+        paragraph: fontDefault
+      }
+    })
   })
 }
 

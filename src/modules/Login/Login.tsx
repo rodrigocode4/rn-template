@@ -4,13 +4,13 @@ import Input from '~/components/Input'
 import { useLoginStyles } from './Login.styles'
 
 type Action = {
-    type: 'SET_EMAIL' | 'SET_PASSWORD',
-    payload: string,
+  type: 'SET_EMAIL' | 'SET_PASSWORD'
+  payload: string
 }
 
 const initialState = {
   email: '',
-  password: '',
+  password: ''
 }
 
 const reducer = (state: typeof initialState, action: Action) => {
@@ -36,24 +36,23 @@ export default () => {
   }, [])
 
   return (
-        <View style={styles.container}>
-            <Input
-                labelText='Email:'
-                onChangeText={handleChangeEmail}
-                value={email}
-                keyboardType='email-address'
-                placeholder='email@email.com'
-            />
-             <Input
-                labelText='Senha:'
-                onChangeText={handleChangePassword}
-                value={password}
-                keyboardType='visible-password'
-                placeholder='********'
-            />
-            <Text style={styles.text}>{email || 'email'}</Text>
-            <Text style={styles.text}>{password || 'senha'}</Text>
-        </View>
-
+    <View style={styles.container}>
+      <Input
+        labelText="Email:"
+        onChangeText={handleChangeEmail}
+        value={email}
+        keyboardType="email-address"
+        placeholder="email@email.com"
+      />
+      <Input
+        labelText="Senha:"
+        onChangeText={handleChangePassword}
+        value={password}
+        keyboardType="visible-password"
+        placeholder="********"
+      />
+      <Text style={styles.text}>{email || 'email'}</Text>
+      <Text style={styles.text}>{password || 'senha'}</Text>
+    </View>
   )
 }

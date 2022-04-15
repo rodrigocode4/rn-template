@@ -12,9 +12,9 @@ module.exports = function (api) {
         {
           root: path.resolve(),
           rootPathPrefix: '~/',
-          rootPathSuffix: 'src',
-        },
-      ],
-    ],
+          rootPathSuffix: 'src'
+        }
+      ]
+    ]
   }
 }

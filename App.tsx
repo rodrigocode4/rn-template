@@ -7,7 +7,7 @@ const theme = createAppTheme()
 
 export default () => (
   <ThemeProvider theme={theme}>
-      <StatusBar animated style="auto" hideTransitionAnimation='slide' />
-      <Login />
-    </ThemeProvider>
+    <StatusBar animated style="auto" hideTransitionAnimation="slide" />
+    <Login />
+  </ThemeProvider>
 )

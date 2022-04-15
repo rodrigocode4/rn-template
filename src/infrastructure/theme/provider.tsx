@@ -8,16 +8,14 @@ interface ThemeContextProps {
 const ThemeContext = createContext({} as ThemeContextProps)
 
 interface Props {
-  theme: Theme;
-  children: ReactNode;
+  theme: Theme
+  children: ReactNode
 }
 
 const ThemeProvider = ({ theme, children }: Props) => {
   const value = useMemo(() => ({ theme }), [theme])
 
-  return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
-  )
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
 
 export { ThemeProvider, ThemeContext }
