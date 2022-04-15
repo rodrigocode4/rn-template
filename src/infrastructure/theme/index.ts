@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { createTheme } from './styles'
 import { createTypography } from './typography'
 import { palette } from './palette'

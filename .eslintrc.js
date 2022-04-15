@@ -19,13 +19,9 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
-    'import/no-unresolved': [0],
-    'import/extensions': [0],
-    'import/prefer-default-export': [0],
     'react/display-name': [0],
     'react/react-in-jsx-scope': [0],
     '@typescript-eslint/no-var-requires': [0],
-    'no-restricted-exports': [0],
     'no-undef': 'off'
   },
   settings: {

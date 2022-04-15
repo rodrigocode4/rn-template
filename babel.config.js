@@ -1,4 +1,3 @@
-/* eslint-disable func-names */
 const path = require('path')
 
 module.exports = function (api) {
