@@ -1,6 +1,9 @@
 import { useCallback, useReducer } from 'react'
-import { Text, View } from 'react-native'
+import { Button, Text, View } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 import Input from '~/components/Input'
+import { selectEmail, selectLogin } from './Login.selectors'
+import { actionsLogin } from './Login.state'
 import { useLoginStyles } from './Login.styles'
 
 type Action = {
@@ -28,12 +31,22 @@ export default () => {
   const styles = useLoginStyles()
   const [{ email, password }, dispatch] = useReducer(reducer, initialState)
 
-  const handleChangeEmail = useCallback((text: string) => {
-    dispatch({ type: 'SET_EMAIL', payload: text })
-  }, [])
-  const handleChangePassword = useCallback((text: string) => {
-    dispatch({ type: 'SET_PASSWORD', payload: text })
-  }, [])
+  const emailSelect = useSelector(selectEmail)
+  const selectorLogin = useSelector(selectLogin)
+  const dispatchRedux = useDispatch()
+
+  const handleChangeEmail = useCallback(
+    (text: string) => {
+      dispatch({ type: 'SET_EMAIL', payload: text })
+    },
+    [dispatch]
+  )
+  const handleChangePassword = useCallback(
+    (text: string) => {
+      dispatch({ type: 'SET_PASSWORD', payload: text })
+    },
+    [dispatch]
+  )
 
   return (
     <View style={styles.container}>
@@ -51,8 +64,16 @@ export default () => {
         keyboardType="visible-password"
         placeholder="********"
       />
-      <Text style={styles.text}>{email || 'email'}</Text>
-      <Text style={styles.text}>{password || 'senha'}</Text>
+      <Button
+        title="buscar email"
+        color="#6600a1c1"
+        onPress={() => {
+          console.log('click')
+          dispatchRedux(actionsLogin.login())
+        }}
+      />
+      <Text style={styles.text}>email: {emailSelect}</Text>
+      <Text style={styles.text}>password: {selectorLogin.password}</Text>
     </View>
   )
 }

@@ -1,13 +1,18 @@
 import { StatusBar } from 'expo-status-bar'
-import { createAppTheme } from './src/infrastructure/theme'
-import { ThemeProvider } from './src/infrastructure/theme/provider'
-import Login from './src/modules/Login'
+import { Provider } from 'react-redux'
+import { configureStoreApp } from '~/infrastructure/store'
+import { createAppTheme } from '~/infrastructure/theme'
+import { ThemeProvider } from '~/infrastructure/theme/provider'
+import Login from '~/modules/Login'
 
 const theme = createAppTheme()
+const store = configureStoreApp()
 
 export default () => (
-  <ThemeProvider theme={theme}>
-    <StatusBar animated style="auto" hideTransitionAnimation="slide" />
-    <Login />
-  </ThemeProvider>
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <StatusBar animated style="auto" hideTransitionAnimation="slide" />
+      <Login />
+    </ThemeProvider>
+  </Provider>
 )

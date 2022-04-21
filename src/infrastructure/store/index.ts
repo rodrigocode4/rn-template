@@ -1,0 +1,1 @@
+export { configureStoreApp } from './configureStore'
