@@ -1,13 +1,12 @@
 import { Dimensions } from 'react-native'
 
-export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } =
-  Dimensions.get('window')
+export const { width, height } = Dimensions.get('window')
 
-const IPHONE6_SCREEN_WIDTH = 375
-const IPHONE6_SCREEN_HEIGHT = 375
+const IPHONE8_SCREEN_WIDTH = 375
+const IPHONE8_SCREEN_HEIGHT = 667
 
-const wscale = SCREEN_WIDTH / IPHONE6_SCREEN_WIDTH
-const hscale = SCREEN_HEIGHT / IPHONE6_SCREEN_HEIGHT
+const wscale = (width / IPHONE8_SCREEN_WIDTH) * 0.8
+const hscale = (height / IPHONE8_SCREEN_HEIGHT) * 0.8
 
 export const normalize = (size: number, based: 'width' | 'height' = 'width') =>
   based === 'height' ? size * hscale : size * wscale
