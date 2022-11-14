@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import { configureStoreApp } from '~/infrastructure/store'
 import { createAppTheme } from '~/infrastructure/theme'
 import { ThemeProvider } from '~/infrastructure/theme/provider'
-import Login from '~/modules/Login'
+import Login from '~/features/Login'
 
 const theme = createAppTheme()
 const store = configureStoreApp()
