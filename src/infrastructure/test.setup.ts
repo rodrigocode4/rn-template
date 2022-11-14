@@ -1,5 +1,7 @@
 import '@testing-library/jest-native/extend-expect'
 
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+
 beforeAll(() => {
   const originalConsoleError = console.error
   console.error = (...args) => {
