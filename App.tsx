@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import { configureStoreApp } from '~/infrastructure/store'
 import { createAppTheme } from '~/infrastructure/theme'
 import { ThemeProvider } from '~/infrastructure/theme/provider'
-import Login from '~/features/Login'
+import { AppRoutes } from '~/features/routes/Routes'
 
 const theme = createAppTheme()
 const store = configureStoreApp()
@@ -12,7 +12,7 @@ export default () => (
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <StatusBar animated style="auto" hideTransitionAnimation="slide" />
-      <Login />
+      <AppRoutes />
     </ThemeProvider>
   </Provider>
 )

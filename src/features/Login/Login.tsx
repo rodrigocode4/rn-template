@@ -1,66 +1,36 @@
-import { useCallback, useReducer } from 'react'
+import * as React from 'react'
 import { Button, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import Input from '~/components/Input'
-import { selectEmail, selectLogin } from './Login.selectors'
-import { actionsLogin } from './Login.state'
+import { selectLogin } from './Login.selectors'
+import { actions } from './Login.slice'
 import { useLoginStyles } from './Login.styles'
-
-type Action = {
-  type: 'SET_EMAIL' | 'SET_PASSWORD'
-  payload: string
-}
-
-const initialState = {
-  email: '',
-  password: ''
-}
-
-const reducer = (state: typeof initialState, action: Action) => {
-  switch (action.type) {
-    case 'SET_EMAIL':
-      return { ...state, email: action.payload }
-    case 'SET_PASSWORD':
-      return { ...state, password: action.payload }
-    default:
-      return state
-  }
-}
 
 export default () => {
   const styles = useLoginStyles()
-  const [{ email, password }, dispatch] = useReducer(reducer, initialState)
 
-  const emailSelect = useSelector(selectEmail)
   const selectorLogin = useSelector(selectLogin)
-  const dispatchRedux = useDispatch()
+  const dispatch = useDispatch()
 
-  const handleChangeEmail = useCallback(
-    (text: string) => {
-      dispatch({ type: 'SET_EMAIL', payload: text })
-    },
-    [dispatch]
-  )
-  const handleChangePassword = useCallback(
-    (text: string) => {
-      dispatch({ type: 'SET_PASSWORD', payload: text })
-    },
-    [dispatch]
-  )
+  const handleChangeEmail = React.useCallback((text: string) => {
+    dispatch(actions.setLogin({ email: text }))
+  }, [])
+
+  const handleChangePassword = (text: string) => {
+    dispatch(actions.setLogin({ password: text }))
+  }
 
   return (
     <View style={styles.container}>
       <Input
-        labelText="Email:"
         onChangeText={handleChangeEmail}
-        value={email}
+        value={selectorLogin.email}
         keyboardType="email-address"
         placeholder="email@email.com"
       />
       <Input
-        labelText="Senha:"
         onChangeText={handleChangePassword}
-        value={password}
+        value={selectorLogin.password}
         keyboardType="visible-password"
         placeholder="********"
       />
@@ -68,11 +38,10 @@ export default () => {
         title="buscar email"
         color="#6600a1c1"
         onPress={() => {
-          console.log('click')
-          dispatchRedux(actionsLogin.login())
+          dispatch(actions.login())
         }}
       />
-      <Text style={styles.text}>email: {emailSelect}</Text>
+      <Text style={styles.text}>email: {selectorLogin.email}</Text>
       <Text style={styles.text}>password: {selectorLogin.password}</Text>
     </View>
   )

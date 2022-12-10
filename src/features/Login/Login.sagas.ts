@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { all, call, put, takeEvery } from 'redux-saga/effects'
+import { navigation } from '../routes/Routes'
+import { ReturnCall } from '../types'
 import { loginApi } from './Login.apis'
-import { actionsLogin } from './Login.state'
+import { actions } from './Login.slice'
 
 function* login() {
   try {
-    const { data } = yield call(loginApi)
-    yield put(actionsLogin.setLogin(data))
+    const { data }: ReturnCall<typeof loginApi> = yield call(loginApi)
+    yield put(actions.setLogin(data))
+    yield call(navigation.navigate, 'HomeScreen')
   } catch (error: any) {
     yield call(
       console.log,
@@ -18,5 +21,5 @@ function* login() {
 }
 
 export function* allLoginSagas() {
-  yield all([takeEvery(actionsLogin.login.type, login)])
+  yield all([takeEvery(actions.login.type, login)])
 }
