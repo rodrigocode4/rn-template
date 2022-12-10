@@ -1,6 +1,38 @@
-import { PixelRatio } from 'react-native'
+import {
+  ImageStyle,
+  PixelRatio,
+  StyleProp,
+  TextStyle,
+  ViewStyle
+} from 'react-native'
 import { normalize } from './normalize'
-import { Fonts, ThemeTypographys } from './types'
+import {
+  Fonts,
+  PaletteColor,
+  Palettes,
+  ThemeColor,
+  ThemeColorBase,
+  ThemeColors,
+  ThemePaletteColorBase,
+  ThemeTypographyFonts,
+  ThemeTypographies
+} from './types'
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const removeEmpty = (obj: any) => {
+  Object.keys(obj).forEach((key) => {
+    if (obj[key] === undefined) {
+      delete obj[key]
+    }
+  })
+  return obj
+}
+
+export const styleWithoutUndefined = <T>(
+  styleObj: StyleProp<ViewStyle | TextStyle | ImageStyle>
+): T => {
+  return removeEmpty(styleObj)
+}
 
 const FRONT_SIZE = 12
 const typographyRem = (n = 1) => {
@@ -10,11 +42,67 @@ const typographyRem = (n = 1) => {
   return result - 2
 }
 
+const isPaletteColor = (palette?: Palettes): palette is PaletteColor => {
+  return !!(palette as PaletteColor)?.main
+}
+
+function getPaletteColor(palette: ThemeColors, color: ThemeColor) {
+  const somePalette = palette[color]
+  if (!isPaletteColor(somePalette)) {
+    return undefined
+  }
+  return somePalette
+}
+
+const getFontSize = (
+  typographies: ThemeTypographies,
+  variant: ThemeTypographyFonts
+) => {
+  return typographies[variant]
+}
+
+const getFontFamily = (
+  typographies: ThemeTypographies,
+  variant: ThemeTypographyFonts
+) => {
+  return typographies.fonts[variant]
+}
+
+const getContrastText = (
+  palette: ThemeColors,
+  color: ThemeColorBase,
+  colorKey: ThemePaletteColorBase = 'main'
+) => {
+  const paletteColor = getPaletteColor(palette, color)
+  if (!paletteColor) {
+    return
+  }
+  const finalColor = paletteColor.contrastText[colorKey]
+  if (!finalColor) {
+    return paletteColor.contrastText.main
+  }
+  return finalColor
+}
+
+const getTextStyles = (
+  typographies: ThemeTypographies,
+  variant: ThemeTypographyFonts,
+  palette: ThemeColors,
+  color: ThemeColorBase,
+  colorKey: ThemePaletteColorBase
+): TextStyle => {
+  return styleWithoutUndefined({
+    color: getContrastText(palette, color, colorKey),
+    fontSize: getFontSize(typographies, variant),
+    fontFamily: getFontFamily(typographies, variant)
+  })
+}
+
 const fonts: Partial<Fonts> = {}
 
 const createTypography = (
-  typographyParam: Partial<ThemeTypographys> = {}
-): ThemeTypographys => {
+  typographyParam: Partial<ThemeTypographies> = {}
+): ThemeTypographies => {
   const remFn = typographyParam.remFn ?? typographyRem
   return {
     remFn,
@@ -32,4 +120,4 @@ const createTypography = (
   }
 }
 
-export { createTypography }
+export { createTypography, getTextStyles }

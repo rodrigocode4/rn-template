@@ -22,6 +22,8 @@ interface CommonPaletteColor {
   white: string
 }
 
+export type Palettes = PaletteColor | CommonPaletteColor
+
 export type ThemeColors = ThemeColorsBase & {
   common?: CommonPaletteColor
 }
@@ -44,7 +46,7 @@ export type Fonts = {
 
 export type RemFn = (n: number) => number
 
-export type ThemeTypographys = ThemeTypographyFontSize & {
+export type ThemeTypographies = ThemeTypographyFontSize & {
   fonts: Fonts
   remFn?: RemFn
 }
@@ -52,5 +54,11 @@ export type ThemeTypographys = ThemeTypographyFontSize & {
 export interface Theme {
   spacing: SpacingFn
   palette: ThemeColors
-  typography: ThemeTypographys
+  typography: ThemeTypographies
 }
+
+export type ThemeColor = keyof ThemeColors
+export type ThemeColorBase = keyof ThemeColorsBase
+export type ThemeTypography = keyof ThemeTypographies
+export type ThemeTypographyFonts = keyof ThemeTypographyFontSize
+export type ThemePaletteColorBase = keyof BasePaletteColor
