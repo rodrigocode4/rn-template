@@ -1,5 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import { Login } from './Login/Login.types'
+import { Login } from './login/Login.types'
 
 export type Reducer<T> = (state: T, action: PayloadAction<T>) => T
 

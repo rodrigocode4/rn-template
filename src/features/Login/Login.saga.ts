@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { all, call, put, takeEvery } from 'redux-saga/effects'
 import { navigation } from '../routes/Routes'
-import { ReturnCall } from '../types'
-import { loginApi } from './Login.apis'
+import { ReturnCall } from '../type'
+import { loginApi } from './Login.api'
 import { actions } from './Login.slice'
 
 function* login() {

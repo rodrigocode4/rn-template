@@ -2,9 +2,9 @@ import * as React from 'react'
 import { Button, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import Input from '~/components/Input'
-import { selectLogin } from './Login.selectors'
+import { selectLogin } from './Login.selector'
 import { actions } from './Login.slice'
-import { useLoginStyles } from './Login.styles'
+import { useLoginStyles } from './Login.style'
 
 export default () => {
   const styles = useLoginStyles()

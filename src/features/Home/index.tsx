@@ -1,5 +1,5 @@
 import { View, Text, Button } from 'react-native'
-import { useAppNavigation } from '../routes/Routes.navigation'
+import { useAppNavigation } from '../routes/Routes.hook'
 
 export default function HomeScreen() {
   const { navigate } = useAppNavigation()

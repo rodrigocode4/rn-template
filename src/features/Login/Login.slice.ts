@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { Reducer } from '../types'
+import { Reducer } from '../type'
 
 import { Login } from './Login.types'
 
@@ -11,10 +11,9 @@ const initialState: Login = {
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const login = () => {}
 
-const setLogin: Reducer<Login> = (state, action) => ({
+const setLogin: Reducer<Login> = (state, action): Login => ({
   ...state,
-  ...action.payload,
-  w: 1
+  ...action.payload
 })
 
 const slice = createSlice({

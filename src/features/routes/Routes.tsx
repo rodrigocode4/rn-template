@@ -3,9 +3,9 @@ import {
   createNavigationContainerRef
 } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import HomeScreen from '../Home'
-import Login from '../Login'
-import { RootStackParamList, MainStackParamList } from './Routes.types'
+import HomeScreen from '../home'
+import Login from '../login'
+import { RootStackParamList, MainStackParamList } from './Routes.type'
 
 type NavigationContainerType = RootStackParamList & MainStackParamList
 

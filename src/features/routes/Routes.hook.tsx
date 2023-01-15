@@ -4,7 +4,7 @@ import {
 } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useMemo } from 'react'
-import { RootStackParamList, MainStackParamList } from './Routes.types'
+import { RootStackParamList, MainStackParamList } from './Routes.type'
 
 type RootNavigationProp = CompositeNavigationProp<
   NativeStackNavigationProp<RootStackParamList>,
