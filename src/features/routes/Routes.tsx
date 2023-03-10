@@ -19,7 +19,7 @@ const navigationSpreading = () => ({
     if (navigationRef.isReady()) {
       return navigationRef.navigate(name)
     }
-    return navigationRef.getState()
+    return navigationRef.current?.getRootState()
   }
 })
 

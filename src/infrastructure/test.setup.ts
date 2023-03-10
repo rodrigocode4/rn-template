@@ -1,4 +1,7 @@
+import React from 'react'
 import '@testing-library/jest-native/extend-expect'
+
+global.React = React
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 

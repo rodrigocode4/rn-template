@@ -14,6 +14,13 @@ export default {
   coverageDirectory: 'coverage',
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   transformIgnorePatterns: [
-    'node_modules/(?!(@react-native|react-native-animatable|react-native)/)'
-  ]
+    'node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|rollbar-react-native|@fortawesome|@react-native|@react-navigation)'
+  ],
+  transform: {
+    '^.+/((@)?react-native)/.+\\.(js|jsx)$': 'babel-jest',
+    '^.+\\.(js|ts|jsx|tsx)$': '@swc/jest'
+  },
+  moduleNameMapper: {
+    '~(.*)$': '<rootDir>/src$1'
+  }
 }
