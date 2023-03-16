@@ -1,7 +1,4 @@
-/*
- * For a detailed explanation regarding each configuration property and type check, visit:
- * https://jestjs.io/docs/configuration
- */
+import type { Config } from 'jest'
 
 export default {
   preset: 'react-native',
@@ -23,4 +20,4 @@ export default {
   moduleNameMapper: {
     '~(.*)$': '<rootDir>/src$1'
   }
-}
+} as Config
