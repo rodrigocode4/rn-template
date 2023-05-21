@@ -1,13 +1,14 @@
 import * as React from 'react'
-import { Button, Text, View } from 'react-native'
+import { Button, Text } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import Container from '~/components/Container'
 import Input from '~/components/Input'
+import { makeStyles } from '~/infrastructure/theme/styles'
 import { selectLogin } from './Login.selector'
 import { actions } from './Login.slice'
-import { useLoginStyles } from './Login.style'
 
 export default () => {
-  const styles = useLoginStyles()
+  const styles = useStyles()
 
   const selectorLogin = useSelector(selectLogin)
   const dispatch = useDispatch()
@@ -21,7 +22,7 @@ export default () => {
   }
 
   return (
-    <View style={styles.container}>
+    <Container>
       <Input
         onChangeText={handleChangeEmail}
         value={selectorLogin.email}
@@ -43,6 +44,21 @@ export default () => {
       />
       <Text style={styles.text}>email: {selectorLogin.email}</Text>
       <Text style={styles.text}>password: {selectorLogin.password}</Text>
-    </View>
+    </Container>
   )
 }
+
+export const useStyles = makeStyles(({ palette, spacing }) => ({
+  text: {
+    color: palette.common?.black,
+    fontSize: spacing(2),
+    textAlign: 'left',
+    backgroundColor: palette.primary.contrastText.dark
+  },
+  input: {
+    height: spacing(5),
+    width: spacing(40),
+    borderWidth: spacing(0.2),
+    paddingHorizontal: spacing()
+  }
+}))

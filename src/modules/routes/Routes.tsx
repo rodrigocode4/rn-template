@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import HomeScreen from '../home'
 import Login from '../login'
 import { RootStackParamList, MainStackParamList } from './Routes.type'
+import { Text } from 'react-native'
 
 type NavigationContainerType = RootStackParamList & MainStackParamList
 
@@ -28,7 +29,15 @@ export const navigation = navigationSpreading()
 export const AppRoutes = () => {
   return (
     <NavigationContainer ref={navigationRef}>
-      <RootStack.Navigator>
+      <RootStack.Navigator
+        screenOptions={{
+          headerShown: true,
+          headerTitle: ({ children }) => {
+            return <Text>{children.replace('Screen', '')}</Text>
+          },
+          headerBackTitle: ''
+        }}
+      >
         <RootStack.Screen name="HomeScreen" component={HomeScreen} />
         <RootStack.Screen name="LoginScreen" component={Login} />
       </RootStack.Navigator>
