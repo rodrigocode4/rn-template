@@ -7,7 +7,7 @@ import { makeStyles } from '~/infrastructure/theme/styles'
 import { selectLogin } from './Login.selector'
 import { actions } from './Login.slice'
 
-export default () => {
+export default function LoginScreen() {
   const styles = useStyles()
 
   const selectorLogin = useSelector(selectLogin)

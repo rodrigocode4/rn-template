@@ -1,5 +1,5 @@
 import { render, fireEvent, waitFor, act } from '~/infrastructure/test.utils'
-import Login from './Login'
+import Login from './Login.screen'
 
 describe('<Login />', () => {
   test('Deve carregar dados da store', async () => {
